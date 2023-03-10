@@ -1,9 +1,12 @@
+import exception.TransportTypeException;
 import object.car.*;
 import object.driver.DriverB;
 import object.driver.DriverC;
 import object.driver.DriverD;
 import object.enums.BodyCapacity;
 import object.enums.LoadCapacity;
+
+import java.util.ArrayList;
 
 import static object.enums.BodyType.SEDAN;
 
@@ -41,17 +44,22 @@ public class Main {
                 driverD,
                 BodyCapacity.LARGE);
 
-
-
         System.out.println(car);
         System.out.println(truck);
         System.out.println(bus);
+
+        car.passDiagnostic();
+        truck.passDiagnostic();
+        try {
+            bus.passDiagnostic();
+        } catch (TransportTypeException exception) {
+            System.out.println("\033[91m" + exception.getMessage() + "\033[0m");
+        }
+
     }
 
 
     private static void printInfo(Transport<?> transport) {
         System.out.println("Водитель " + transport.getDriver().getName() + "  управляет  " + transport.getBrand() + "  будет учавствовать в заезде");
-
-
     }
 }

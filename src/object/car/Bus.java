@@ -1,6 +1,7 @@
 package object.car;
 
 
+import exception.TransportTypeException;
 import object.driver.DriverD;
 import object.enums.BodyCapacity;
 import object.enums.Type;
@@ -61,4 +62,10 @@ public class Bus extends Transport<DriverD> {
     public void printType() {
         System.out.println();
     }
+
+    @Override
+    public void passDiagnostic() throws TransportTypeException {
+        throw new TransportTypeException("Автобусам проходить диагностику не нужно.");
+    }
+
 }
