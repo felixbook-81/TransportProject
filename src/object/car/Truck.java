@@ -1,8 +1,11 @@
 package object.car;
 
+import object.Mechanic;
 import object.driver.DriverC;
 import object.enums.LoadCapacity;
 import object.enums.Type;
+
+import java.util.List;
 
 public class Truck extends Transport<DriverC> {
 private LoadCapacity loadCapacity;
@@ -10,11 +13,11 @@ private LoadCapacity loadCapacity;
     public Truck(String brand,
                  String model,
                  double engineVolume,
-                 DriverC driver,LoadCapacity loadCapacity) {
-        super(brand, model, engineVolume, driver, Type.TRUCK);
+                 DriverC driver, LoadCapacity loadCapacity,
+                 List<Mechanic> mechanics) {
+        super(brand, model, engineVolume, driver, Type.TRUCK, mechanics);
         this.loadCapacity=loadCapacity;
     }
-
 
 
     @Override

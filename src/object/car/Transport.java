@@ -2,8 +2,11 @@ package object.car;
 
 
 import exception.TransportTypeException;
+import object.Mechanic;
 import object.driver.Driver;
 import object.enums.Type;
+
+import java.util.List;
 
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
@@ -11,10 +14,13 @@ public abstract class Transport<T extends Driver> implements Competing {
     private final String model;
 
     private double engineVolume;
+
+    private  List<Mechanic> mechanics;
+
     private T driver;
     private Type type;
 
-    public Transport(String brand, String model, double engineVolume, T driver, Type type) {
+    public Transport(String brand, String model, double engineVolume, T driver, Type type, List<Mechanic> mechanics) {
 
         if (brand == null || brand.isEmpty()) {
             brand = "default";
@@ -26,6 +32,7 @@ public abstract class Transport<T extends Driver> implements Competing {
         }
         this.model = model;
         this.type = type;
+        this.mechanics = mechanics;
         setEngineVolume(engineVolume);
         setDriver(driver);
     }
@@ -51,6 +58,9 @@ public abstract class Transport<T extends Driver> implements Competing {
         return engineVolume;
     }
 
+    public List<Mechanic> getMechanics() {
+        return mechanics;
+    }
 
     public void setEngineVolume(double engineVolume) {
         if (engineVolume <= 0) {
@@ -77,6 +87,10 @@ public abstract class Transport<T extends Driver> implements Competing {
 
     public void passDiagnostic() throws TransportTypeException {
 
+    }
+
+    public boolean checkSTO() {
+        return true;
     }
 
     @Override

@@ -2,9 +2,12 @@ package object.car;
 
 
 import exception.TransportTypeException;
+import object.Mechanic;
 import object.driver.DriverD;
 import object.enums.BodyCapacity;
 import object.enums.Type;
+
+import java.util.List;
 
 public class Bus extends Transport<DriverD> {
     private BodyCapacity bodyCapacity;
@@ -13,8 +16,9 @@ public class Bus extends Transport<DriverD> {
                String model,
                double engineVolume,
                DriverD driver,
-               BodyCapacity bodyCapacity) {
-        super(brand, model, engineVolume, driver, Type.BUS);
+               BodyCapacity bodyCapacity,
+               List<Mechanic> mechanics) {
+        super(brand, model, engineVolume, driver, Type.BUS, mechanics);
         this.bodyCapacity = bodyCapacity;
     }
 
@@ -68,4 +72,8 @@ public class Bus extends Transport<DriverD> {
         throw new TransportTypeException("Автобусам проходить диагностику не нужно.");
     }
 
+    @Override
+    public boolean checkSTO() {
+        return false;
+    }
 }

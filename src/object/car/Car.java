@@ -1,9 +1,12 @@
 package object.car;
 
 
+import object.Mechanic;
 import object.driver.DriverB;
 import object.enums.BodyType;
 import object.enums.Type;
+
+import java.util.List;
 
 public  class Car extends Transport<DriverB> {
     private BodyType bodyType;
@@ -12,8 +15,9 @@ public  class Car extends Transport<DriverB> {
                String model,
                double engineVolume,
                DriverB driver,
-               BodyType bodyType) {
-        super(brand, model, engineVolume, driver, Type.CAR);
+               BodyType bodyType,
+               List<Mechanic> mechanics) {
+        super(brand, model, engineVolume, driver, Type.CAR, mechanics);
         this.bodyType = bodyType;
     }
 
@@ -57,13 +61,13 @@ public  class Car extends Transport<DriverB> {
     }
 
     @Override
-    public String toString() {
-        return super.toString() + bodyType;
+    public void passDiagnostic() {
+        System.out.println("Автомобиль может проходить диагностику");
     }
 
     @Override
-    public void passDiagnostic() {
-        System.out.println("Автомобиль может проходить диагностику");
+    public String toString() {
+        return super.toString() + bodyType;
     }
 }
 
