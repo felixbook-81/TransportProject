@@ -60,6 +60,11 @@ public  class Car extends Transport<DriverB> {
     public String toString() {
         return super.toString() + bodyType;
     }
+
+    @Override
+    public void passDiagnostic() {
+        System.out.println("Автомобиль может проходить диагностику");
+    }
 }
 
 

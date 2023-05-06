@@ -47,4 +47,9 @@ private LoadCapacity loadCapacity;
         int maxSpeed = (int)(maxBound+ (maxBound-minBound)*Math.random());
         System.out.println("Лучшее время круга для грузовика"+ maxSpeed);
     }
+
+    @Override
+    public void passDiagnostic() {
+        System.out.println("Грузовик может проходить диагностику");
+    }
 }

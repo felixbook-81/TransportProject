@@ -1,6 +1,7 @@
 package object.car;
 
 
+import exception.TransportTypeException;
 import object.driver.Driver;
 import object.enums.Type;
 
@@ -74,6 +75,9 @@ public abstract class Transport<T extends Driver> implements Competing {
         System.out.println("Водитель" + driver.getName() + " управляет автомобилем" + getBrand() + "  и будет учавствовать в заезде");
     }
 
+    public void passDiagnostic() throws TransportTypeException {
+
+    }
 
     @Override
     public String toString() {
